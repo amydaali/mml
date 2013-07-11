@@ -1,8 +1,5 @@
-
 function lse = logSumExp ( X )
-
 % function lse = logSumExp ( X )
-% logSumExp - Log ( Sum ( Exponential ) )
 %
 % usage
 % lse = logSumExp ( X )
@@ -14,18 +11,18 @@ function lse = logSumExp ( X )
 % 	lse : The log sum exponential over all columns.
 %
 % description
-% 	Computes the log sum exponential for a mixture model vector of values. It is used
+% 	Computes the log sum exponential for a set of small values. It is used
 % 	to avoid numerical underflow when calculcating the log of a sum. 
 %
-% 	Each column value of X is a log probability value from a mixture or some other thing 
-%	we want to sum. If the mixtures contain a different number of components the unfilled 
-%	values need to be set to 0. For example: 
-%	X = [log(pi11) + log(P11(x1)), log(pi12) + log(P11(x2));
-%		 log(pi21) + log(P21(x1)), log(pi22) + log(P21(x2));
-%		 log(pi31) + log(P31(x1)), 0]
-%	The 0 number will be disregarded in the computations.
+% 	Each column value of X is a log value from a mixture or some other that  
+%	  we want to sum. If the matrix contain a different number of components the unfilled 
+%	  values need to be set to 0. For example: 
+%	  X = [log(pi11) + log(P11(x1)), log(pi12) + log(P11(x2));
+%		     log(pi21) + log(P21(x1)), log(pi22) + log(P21(x2));
+%		     log(pi31) + log(P31(x1)), 0]
+%	  The 0 number will be disregarded in the computations.
 %
-%	A brief description as to how this works: 
+%	  A brief description of how this works: 
 % 	In a mixture model the probability of an event x is 
 % 	P(x) = pi1*P1(x) + pi2*P2(x)... 
 % 	The problem is usually that  P1, P2,... are small for all x which makes 
@@ -48,7 +45,7 @@ function lse = logSumExp ( X )
 %		log(p) = pMax + log( exp(0) + exp(log(p2)-pMax) ) =
 %		pMax + log( 1 + exp(log(p2)-pMax) )
 %		
-% 		This means that we gotten out most of the probability mass from the 
+% 	This means that we gotten out most of the probability mass from the 
 %		sum and we have avoided summing several small numbers. Hopefully 
 %		the exp(log(p2)-pMax) will be nice as well. 
 % 	
