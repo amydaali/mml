@@ -73,7 +73,6 @@ function lse = logSumExp ( X )
  	for i_mixtures = 1:N
  		mixComps = X(:,i_mixtures);
  		mixComps(mixComps==0) = [];
- 		mixComps
  		lse(1,i_mixtures) = xMax(i_mixtures) + log ( sum ( exp( mixComps - xMax(i_mixtures) ) ) );
  	end
 
